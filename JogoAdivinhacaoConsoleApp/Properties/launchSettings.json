@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "JogoAdivinhacaoConsoleApp": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
