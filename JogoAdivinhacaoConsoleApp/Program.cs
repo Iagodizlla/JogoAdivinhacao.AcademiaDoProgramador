@@ -46,6 +46,11 @@ namespace JogoAdivinhacaoConsoleApp
                     Console.ReadLine();
                     break;
                 }
+                else if(n1 < 1 || n1 > 20)
+                {
+                    Console.WriteLine("Numero invalido! Digite um numero entre 1 e 20");
+                    t--;
+                }
                 else if (n1 > ns)
                 {
                     Console.WriteLine($"O numero digitado e maior que o numero sorteado|Tentativa {t} de {tm}");
@@ -56,7 +61,7 @@ namespace JogoAdivinhacaoConsoleApp
                 }
 
                 //Verefica se o usuario ainda tem tentativas
-                if (t == tm)
+                if (t > tm)
                 {
                     Console.WriteLine("Voce perdeu! O numero sorteado era: " + ns);
                     Console.ReadLine();
@@ -73,8 +78,16 @@ namespace JogoAdivinhacaoConsoleApp
                 }
                 else if (c != "S")
                 {
-                    Console.WriteLine("Opcao invalida!");
-                    Console.ReadLine();
+                    while (true)
+                    {
+                        Console.WriteLine("Opcao invalida!");
+                        Console.Write("Deseja continuar? (S/N) ");
+                        c = Console.ReadLine().ToUpper();
+                        if (c == "S" || c == "N")
+                        {
+                            break;
+                        }
+                    }
                 }
             }
         }
