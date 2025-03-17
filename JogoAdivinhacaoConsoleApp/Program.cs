@@ -79,7 +79,6 @@ namespace JogoAdivinhacaoConsoleApp
                 Console.WriteLine("Parabens, voce acertou!");
                 t = 0;
                 ns = GerarNumeroAleatorio();
-                Console.ReadLine();
             }
             else if (n1 < 1 || n1 > 20)
             {
