@@ -9,7 +9,7 @@ namespace JogoAdivinhacaoConsoleApp
         {
 
             //Gerar um numero aleatorio
-            int tm1 = 0, ns = GerarnumeroAleatorio();
+            int tm1 = 0, ns = GerarNumeroAleatorio();
 
             //Pergunta quantas tentativas o usuario deseja
             int tm = EscolhaDificuldade(tm1);
@@ -78,7 +78,7 @@ namespace JogoAdivinhacaoConsoleApp
             {
                 Console.WriteLine("Parabens, voce acertou!");
                 t = 0;
-                ns = GerarnumeroAleatorio();
+                ns = GerarNumeroAleatorio();
                 Console.ReadLine();
             }
             else if (n1 < 1 || n1 > 20)
@@ -96,7 +96,7 @@ namespace JogoAdivinhacaoConsoleApp
             }
             return ns;
         }
-        static int GerarnumeroAleatorio()
+        static int GerarNumeroAleatorio()
         {
             Random r = new Random();
             return r.Next(1, 20);
@@ -105,7 +105,7 @@ namespace JogoAdivinhacaoConsoleApp
         {
             Console.WriteLine("Voce perdeu! O numero sorteado era: " + ns1);
             Console.ReadLine();
-            int ns = GerarnumeroAleatorio();
+            int ns = GerarNumeroAleatorio();
             t = 0;
             return ns;
         }
