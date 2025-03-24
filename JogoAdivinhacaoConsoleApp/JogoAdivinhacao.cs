@@ -18,7 +18,6 @@ namespace JogoAdivinhacaoConsoleApp
             if (n1 == ns)
             {
                 Console.WriteLine("Parabens, voce acertou!");
-                ns = JogoAdivinhacao.GerarNumeroAleatorio();
             }
             else if (n1 < 1 || n1 > 20)
             {
@@ -34,13 +33,37 @@ namespace JogoAdivinhacaoConsoleApp
             }
             return ns;
         }
-        public static int UsuarioPerdeu(int ns1 , int t)
+        static (int , int)UsuarioPerdeu(int ns1 , int t)
         {
             Console.WriteLine("Voce perdeu! O numero sorteado era: " + ns1);
             Console.ReadLine();
             int ns = JogoAdivinhacao.GerarNumeroAleatorio();
             t = 0;
-            return ns;
+            return (ns, t);
+        }
+        public static (int, int) GerenciarTentativas(int t, int n1, int ns, int tm)
+        {
+
+            if (n1 == ns)
+            {
+                t = 1;
+            }
+            else if (n1 < 1 || n1 > 20)
+            {
+                t--;
+            }
+            else
+            {
+                t++;
+            }
+
+            //Verefica se o usuario ainda tem tentativas
+            if (t > tm)
+            {
+                (ns, t) = UsuarioPerdeu(ns, t);
+            }
+
+            return (t, ns);
         }
     }
 }

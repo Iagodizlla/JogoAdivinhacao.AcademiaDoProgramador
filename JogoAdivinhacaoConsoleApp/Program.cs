@@ -1,11 +1,12 @@
 ﻿using System.Numerics;
+using System.Reflection.Metadata;
 using System.Security.Principal;
 
 namespace JogoAdivinhacaoConsoleApp
 {
     internal class Program
     {
-        static int t = 0;
+        static int t = 1;
         static void Main(string[] args)
         {
 
@@ -19,30 +20,20 @@ namespace JogoAdivinhacaoConsoleApp
             {
                 Cabecalho();
 
-                //Verifica se acertou
-
                 Console.WriteLine("Digite um numero entre 1 e 20");
                 int n1 = int.Parse(Console.ReadLine()!);
-                t++;
 
-                if(n1 == ns)
-                {
-                    t = 0;
-                }else if(n1 < 1 || n1 > 20)
-                {
-                    t--;
-                }
                 ns = JogoAdivinhacao.VerificarRespostaUsuario(n1, ns, tm, t);
 
-                //Verefica se o usuario ainda tem tentativas
-                if (t > tm)
+                (t, ns) = JogoAdivinhacao.GerenciarTentativas(t, n1, ns, tm);
+
+                //Verifica se acertou
+                if (n1 == ns)
                 {
-                    ns = JogoAdivinhacao.UsuarioPerdeu(ns, t);
+                    ns = JogoAdivinhacao.GerarNumeroAleatorio();
                 }
-
-                //Pergunta se deseja continuar
-                string c = UsuarioContinuar();
-
+                    //Pergunta se deseja continuar
+                    string c = UsuarioContinuar();
 
                 if (c != "S" && c != "N")
                 {
