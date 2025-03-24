@@ -34,5 +34,13 @@ namespace JogoAdivinhacaoConsoleApp
             }
             return ns;
         }
+        public static int UsuarioPerdeu(int ns1 , int t)
+        {
+            Console.WriteLine("Voce perdeu! O numero sorteado era: " + ns1);
+            Console.ReadLine();
+            int ns = JogoAdivinhacao.GerarNumeroAleatorio();
+            t = 0;
+            return ns;
+        }
     }
 }

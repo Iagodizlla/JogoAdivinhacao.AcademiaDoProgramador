@@ -37,7 +37,7 @@ namespace JogoAdivinhacaoConsoleApp
                 //Verefica se o usuario ainda tem tentativas
                 if (t > tm)
                 {
-                    ns = UsuarioPerdeu(ns);
+                    ns = JogoAdivinhacao.UsuarioPerdeu(ns, t);
                 }
 
                 //Pergunta se deseja continuar
@@ -80,14 +80,6 @@ namespace JogoAdivinhacaoConsoleApp
                 default: tm = 3; break;
             }
             return tm;
-        }
-        static int UsuarioPerdeu(int ns1)
-        {
-            Console.WriteLine("Voce perdeu! O numero sorteado era: " + ns1);
-            Console.ReadLine();
-            int ns = JogoAdivinhacao.GerarNumeroAleatorio();
-            t = 0;
-            return ns;
         }
         static string UsuarioContinuar()
         {
