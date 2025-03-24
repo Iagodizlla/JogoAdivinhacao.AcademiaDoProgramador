@@ -37,7 +37,7 @@ namespace JogoAdivinhacaoConsoleApp
         {
             Console.WriteLine("Voce perdeu! O numero sorteado era: " + ns1);
             Console.ReadLine();
-            int ns = JogoAdivinhacao.GerarNumeroAleatorio();
+            int ns = GerarNumeroAleatorio();
             t = 0;
             return (ns, t);
         }
@@ -61,6 +61,11 @@ namespace JogoAdivinhacaoConsoleApp
             if (t > tm)
             {
                 (ns, t) = UsuarioPerdeu(ns, t);
+            }
+            //Verifica se acertou
+            if (n1 == ns)
+            {
+                ns = JogoAdivinhacao.GerarNumeroAleatorio();
             }
 
             return (t, ns);

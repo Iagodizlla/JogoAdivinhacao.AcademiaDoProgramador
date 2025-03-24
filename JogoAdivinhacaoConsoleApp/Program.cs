@@ -27,13 +27,8 @@ namespace JogoAdivinhacaoConsoleApp
 
                 (t, ns) = JogoAdivinhacao.GerenciarTentativas(t, n1, ns, tm);
 
-                //Verifica se acertou
-                if (n1 == ns)
-                {
-                    ns = JogoAdivinhacao.GerarNumeroAleatorio();
-                }
-                    //Pergunta se deseja continuar
-                    string c = UsuarioContinuar();
+                //Pergunta se deseja continuar
+                string c = UsuarioContinuar();
 
                 if (c != "S" && c != "N")
                 {
