@@ -16,6 +16,10 @@ Os níveis de dificuldade serão: 
 1. Fácil = 15 chances 
 2. Médio = 10 chances     
 3. Difícil = 5 chances
+---
+## Tecnologias
+
+[![Tecnologias](https://skillicons.dev/icons?i=git,github,cs,dotnet,visualstudio)](https://skillicons.dev)
 
 ---
 ## Entrada
