@@ -1,4 +1,5 @@
-﻿using System.Security.Principal;
+﻿using System.Numerics;
+using System.Security.Principal;
 
 namespace JogoAdivinhacaoConsoleApp
 {
@@ -9,7 +10,7 @@ namespace JogoAdivinhacaoConsoleApp
         {
 
             //Gerar um numero aleatorio
-            int tm1 = 0, ns = GerarNumeroAleatorio();
+            int tm1 = 0, ns = JogoAdivinhacao.GerarNumeroAleatorio();
 
             //Pergunta quantas tentativas o usuario deseja
             int tm = EscolhaDificuldade(tm1);
@@ -19,7 +20,19 @@ namespace JogoAdivinhacaoConsoleApp
                 Cabecalho();
 
                 //Verifica se acertou
-                ns = VerificaRespostaUsuario(ns, tm);
+
+                Console.WriteLine("Digite um numero entre 1 e 20");
+                int n1 = int.Parse(Console.ReadLine()!);
+                t++;
+
+                if(n1 == ns)
+                {
+                    t = 0;
+                }else if(n1 < 1 || n1 > 20)
+                {
+                    t--;
+                }
+                ns = JogoAdivinhacao.VerificarRespostaUsuario(n1, ns, tm, t);
 
                 //Verefica se o usuario ainda tem tentativas
                 if (t > tm)
@@ -68,43 +81,11 @@ namespace JogoAdivinhacaoConsoleApp
             }
             return tm;
         }
-        static int VerificaRespostaUsuario(int ns, int tm)
-        {
-            Console.WriteLine("Digite um numero entre 1 e 20");
-            int n1 = int.Parse(Console.ReadLine()!);
-            t++;
-
-            if (n1 == ns)
-            {
-                Console.WriteLine("Parabens, voce acertou!");
-                t = 0;
-                ns = GerarNumeroAleatorio();
-            }
-            else if (n1 < 1 || n1 > 20)
-            {
-                Console.WriteLine("Numero invalido! Digite um numero entre 1 e 20");
-                t--;
-            }
-            else if (n1 > ns)
-            {
-                Console.WriteLine($"O numero digitado e maior que o numero sorteado|Tentativa {t} de {tm}");
-            }
-            else
-            {
-                Console.WriteLine($"O numero digitado e menor que o numero sorteado|Tentativa {t} de {tm}");
-            }
-            return ns;
-        }
-        static int GerarNumeroAleatorio()
-        {
-            Random r = new Random();
-            return r.Next(1, 20);
-        }
         static int UsuarioPerdeu(int ns1)
         {
             Console.WriteLine("Voce perdeu! O numero sorteado era: " + ns1);
             Console.ReadLine();
-            int ns = GerarNumeroAleatorio();
+            int ns = JogoAdivinhacao.GerarNumeroAleatorio();
             t = 0;
             return ns;
         }
